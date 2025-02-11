@@ -1,0 +1,34 @@
+{% extends "shopapp/base.html" %}
+{% load i18n %}
+
+{% block title %}
+  {{ user.username }}'s {% translate 'Profile' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{{ user.username }}'s {% translate 'Profile' %}</h1>
+  <div>
+    {% if user.profile.avatar %}
+      <img class="image-avatar" src="{{ user.profile.avatar.url }}"
+           alt="{{ user.profile.avatar.name }}">
+    {% else %}
+      <p>{% translate 'No image' %}</p>
+    {% endif %}
+  </div>
+
+  {% if request.user.is_staff or request.user == user %}
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ profile_form }}
+      <br>
+      <button class="button-update-avatar" type="submit">{% translate 'Update Avatar' %}</button>
+    </form>
+  {% endif %}
+  {% blocktranslate with first_name=user.first_name last_name=user.last_name email=user.email bio=user.profile.bio %}
+  <p>First name: {{ first_name }}</p>
+  <p>Last name: {{ last_name }}</p>
+  <p>Email: {{ email }}</p>
+  <p>Bio: {{ bio }}</p>
+  {% endblocktranslate %}
+
+{% endblock %}

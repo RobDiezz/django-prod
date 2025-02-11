@@ -1,0 +1,433 @@
+[
+  {
+    "model": "shopapp.product",
+    "pk": 7,
+    "fields": {
+      "name": "Laptop",
+      "price": "1999.00",
+      "description": "Особенности:\r\n\r\n    Дисплей Liquid Retina XDR;\r\n    Новый мощный чип M3, обеспечивающий впечатляющую производительность;\r\n    Удобная клавиатура, а также гигантский трекпад;\r\n    Высочайшие показатели энергоэффективности процессора;\r\n    Автономность – 22 часа;\r\n    Большой набор встроенных портов;\r\n    ОС MacOS Sonoma новейшего поколения;\r\n    Надёжная система охлаждения. \r\n\r\nПрекрасный дисплей\r\n\r\nУвеличенные показатели яркости экрана – главный апдейт характеристик дисплея. При просмотре контента-HDR яркость экрана достигает 1600 нит. Этот успех дополняется технологией ProMotion, обеспечивающей очень плавное изображение.\r\nНепревзойдённый дизайн\r\n\r\nУстройство имеет всё те же тонкие рамки экрана, но при этом новый цвет алюминиевого корпуса – Space Black. Основной особенностью дизайна является множество разъёмов для подключения устройств: 3 порта Thunderbolt 4, MagSafe 3, Jack 3.5 мм, SDXC, HDMI.\r\n\r\nКлавиатура Magic Force Touch с улучшенной отслеживающей способностью курсора и широкий функциональный набор, включая датчик Touch ID, остаются ключевыми элементами управления и ввода данных.\r\nСупермощные процессоры M3 Pro / M3 Max\r\n\r\nЧип M3 Pro / M3 Max приносит значительный прорыв в графической архитектуре фирменных процессоров Apple благодаря более новому, шустрому и эффективному графическому процессору. Одной из революционных технологий является Dynamic Caching, которая позволяет GPU эффективно управлять локальной памятью в реальном времени.\r\n\r\nMacBook представлен в различных конфигурациях: с процессором M3 Pro, оснащённым 12 ядрами центрального процессора и 18 ядрами графического процессора, или с M3 Max, который оснащён 14 или 16 ядрами ЦП и 30 или 40 ядрами ГП соответственно. Как в базовых, так и в топовых конфигурациях этой флагманской линейки ноутбуков наблюдается значительное увеличение производительности.\r\nВысокая автономность\r\n\r\nФирменные чипсеты M3 не только приобрели внушительное повышение производительности, но также значительно увеличили энергоэффективность. Этот успех позволил разработчикам достичь рекордного уровня автономной работы в истории ноутбуков MacBook – практически 22 часа работы.",
+      "discount": 10,
+      "created_at": "2024-10-07T21:36:52.101Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 9,
+    "fields": {
+      "name": "Smartphone",
+      "price": "999.00",
+      "description": "iPhone 14 ProMax 512GB",
+      "discount": 15,
+      "created_at": "2024-10-07T21:36:52.105Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 10,
+    "fields": {
+      "name": "Tablet",
+      "price": "1324.00",
+      "description": "Tablet creaTE",
+      "discount": 0,
+      "created_at": "2024-11-07T16:03:28.701Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 11,
+    "fields": {
+      "name": "Phone2",
+      "price": "899.99",
+      "description": "Phone 2 is better than phone 1\r\nthis is a great phone",
+      "discount": 0,
+      "created_at": "2024-11-07T16:09:05.792Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 12,
+    "fields": {
+      "name": "Phone3",
+      "price": "1999.99",
+      "description": "phone3",
+      "discount": 12,
+      "created_at": "2024-11-07T16:26:56.353Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 13,
+    "fields": {
+      "name": "Tablet 2",
+      "price": "500.15",
+      "description": "a new tablet",
+      "discount": 15,
+      "created_at": "2024-11-07T16:28:32.044Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 14,
+    "fields": {
+      "name": "New",
+      "price": "985.55",
+      "description": "New product test",
+      "discount": 200,
+      "created_at": "2024-11-07T17:50:37.035Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 15,
+    "fields": {
+      "name": "New2",
+      "price": "999999.11",
+      "description": "New product 2\r\nTEST!",
+      "discount": 17,
+      "created_at": "2024-11-07T17:52:09.188Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 16,
+    "fields": {
+      "name": "Phone1234",
+      "price": "999999.00",
+      "description": "a new phone",
+      "discount": 10,
+      "created_at": "2024-11-28T17:02:51.823Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 17,
+    "fields": {
+      "name": "Phone1234",
+      "price": "999999.00",
+      "description": "a new phone",
+      "discount": 10,
+      "created_at": "2024-11-28T17:04:10.052Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 18,
+    "fields": {
+      "name": "Phone1234",
+      "price": "999999.00",
+      "description": "a new phone",
+      "discount": 10,
+      "created_at": "2024-11-28T17:06:18.230Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 19,
+    "fields": {
+      "name": "Phone1234",
+      "price": "999999.00",
+      "description": "a new phone",
+      "discount": 10,
+      "created_at": "2024-11-28T17:08:03.782Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 20,
+    "fields": {
+      "name": "Phone1234",
+      "price": "999999.00",
+      "description": "a new phone",
+      "discount": 10,
+      "created_at": "2024-11-28T17:12:16.350Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 21,
+    "fields": {
+      "name": "Macbook pro 16 36Gb 1Tb m4 max",
+      "price": "3990.00",
+      "description": "Nice laptop",
+      "discount": 15,
+      "created_at": "2024-11-28T17:15:05.666Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 22,
+    "fields": {
+      "name": "Macbook pro 16 36Gb 1Tb m4 max",
+      "price": "3990.00",
+      "description": "Nice laptop",
+      "discount": 15,
+      "created_at": "2024-11-28T17:16:48.211Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 23,
+    "fields": {
+      "name": "Macbook pro 16 36Gb 1Tb m4 max",
+      "price": "3990.00",
+      "description": "Nice laptop",
+      "discount": 15,
+      "created_at": "2024-11-28T17:18:14.747Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 24,
+    "fields": {
+      "name": "Macbook pro 16 36Gb 1Tb m4 max",
+      "price": "3990.00",
+      "description": "Nice laptop",
+      "discount": 15,
+      "created_at": "2024-11-28T17:22:15.467Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 25,
+    "fields": {
+      "name": "Macbook pro 16 36Gb 1Tb m4 max",
+      "price": "3990.00",
+      "description": "Nice laptop",
+      "discount": 15,
+      "created_at": "2024-11-28T17:22:42.489Z",
+      "archived": true,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 26,
+    "fields": {
+      "name": "A new product new",
+      "price": "2399.00",
+      "description": "aswdawsxz saddfsae",
+      "discount": 15,
+      "created_at": "2024-11-28T17:23:24.766Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 27,
+    "fields": {
+      "name": "Urii and Ilia",
+      "price": "985742.00",
+      "description": "IT prof",
+      "discount": 20,
+      "created_at": "2024-12-04T21:02:20.809Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 28,
+    "fields": {
+      "name": "New product test",
+      "price": "123.00",
+      "description": "Hey",
+      "discount": 10,
+      "created_at": "2024-12-11T17:14:29.761Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 29,
+    "fields": {
+      "name": "a new product",
+      "price": "4566.00",
+      "description": "Hop hey",
+      "discount": 2,
+      "created_at": "2024-12-11T17:21:15.068Z",
+      "archived": false,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 30,
+    "fields": {
+      "name": "a new product 2",
+      "price": "9876.00",
+      "description": "TT  BB",
+      "discount": 10,
+      "created_at": "2024-12-11T17:36:25.399Z",
+      "archived": false,
+      "created_by": 5
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 31,
+    "fields": {
+      "name": "a new product 3",
+      "price": "4587.00",
+      "description": "lllllLLL",
+      "discount": 15,
+      "created_at": "2024-12-11T17:51:03.376Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 32,
+    "fields": {
+      "name": "a new product 4",
+      "price": "6547.00",
+      "description": "Dadad",
+      "discount": 30,
+      "created_at": "2024-12-11T18:16:52.731Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "promocode": "",
+      "delivery_address": "zSdaws",
+      "created_at": "2024-11-07T19:37:49.291Z",
+      "products": []
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "promocode": "1234",
+      "delivery_address": "zSdaws",
+      "created_at": "2024-11-07T19:38:49.959Z",
+      "products": []
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "promocode": "promo",
+      "delivery_address": "Moscow",
+      "created_at": "2024-11-07T19:39:22.772Z",
+      "products": [
+        12
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "promocode": "def",
+      "delivery_address": "zsddas",
+      "created_at": "2024-11-07T19:57:58.461Z",
+      "products": [
+        7
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 7,
+    "fields": {
+      "user": 1,
+      "promocode": "sddddddddddddddddddd",
+      "delivery_address": "sdf",
+      "created_at": "2024-11-07T20:46:51.761Z",
+      "products": [
+        7
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "promocode": "pro",
+      "delivery_address": "",
+      "created_at": "2024-12-02T16:52:00.948Z",
+      "products": [
+        7,
+        21
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "promocode": "Sale123",
+      "delivery_address": "Moscow",
+      "created_at": "2024-12-02T17:00:46.549Z",
+      "products": [
+        14,
+        15,
+        12,
+        9,
+        10,
+        13
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "promocode": "asd",
+      "delivery_address": "aswdwaaw",
+      "created_at": "2024-12-02T17:17:36.569Z",
+      "products": [
+        21
+      ]
+    }
+  }
+]

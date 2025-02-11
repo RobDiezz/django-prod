@@ -1,0 +1,63 @@
+{% extends 'shopapp/base.html' %}
+{% load i18n %}
+
+
+{% block title %}
+  {% translate 'Order list' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{% translate 'Orders' %}</h1>
+  <ul>
+    <li><a class="link-shopapp"
+           href="/shop/orders/create">{% translate 'Create a new order' %}</a></li>
+  </ul>
+  {% if object_list %}
+    <div>
+      {% blocktranslate count order_count=object_list|length %}
+        There is only one order.
+        {% plural %}
+        There are {{ order_count }} orders.
+      {% endblocktranslate %}
+    </div>
+    <div>
+      <table class="price-list">
+        <thead>
+        <tr>
+          {% blocktranslate %}
+            <th>#</th>
+            <th>Details</th>
+            <th>Order by</th>
+            <th>Promocode</th>
+            <th>Delivery address</th>
+            <th>Products in order</th>
+            <th>All order user</th>
+          {% endblocktranslate %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in object_list %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td><a class="link-shopapp" href="{% url 'shopapp:order_details' pk=order.pk %}"
+            >{% translate 'Order' %} # {{ order.pk }}</a></td>
+            <td>{% firstof order.user.first_name order.user.username %}</td>
+            <td><code>{{ order.promocode }}</code></td>
+            <td> {{ order.delivery_address }}</td>
+            <td>{% for product in order.products.all %}
+              <div><a class="link-shopapp"
+                      href="{% url 'shopapp:product_details' pk=product.pk %}">
+                {{ product.name }}</a></div>
+            {% endfor %}</td>
+          <td><a class="link-shopapp" href="{% url 'shopapp:user_orders_list' user_id=order.user.pk %}">
+            {% translate 'Click' %}</a>
+          </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <h3>{% translate 'No orders yet' %}</h3>
+  {% endif %}
+{% endblock %}

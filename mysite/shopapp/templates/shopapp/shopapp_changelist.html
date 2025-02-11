@@ -1,0 +1,20 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+  {% load admin_urls %}
+  {% translate 'Import' as import_trans %}
+  <li>
+    {% url url_import_csv as url_csv %}
+    <a href="{{ url_csv }}" class="addlink">
+      {{ import_trans }} CSV
+    </a>
+    {% url url_import_json as url_json %}
+    {% if url_json %}
+      <a href="{{ url_json }}" class="addlink">
+        {{ import_trans }} JSON
+      </a>
+    {% endif %}
+  </li>
+  {{ block.super }}
+{% endblock %}

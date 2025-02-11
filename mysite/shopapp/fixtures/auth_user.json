@@ -1,0 +1,107 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "argon2$argon2id$v=19$m=102400,t=2,p=8$T2NRM01qdGV0R2U0emJQUEtubnpBTA$C4cWOkQoqvsqIXXa5Pe7/RDPERu11MS9Fn/em/O2T6A",
+      "last_login": "2024-12-12T19:38:44.631Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Ivan",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-10-05T18:56:11Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "argon2$argon2id$v=19$m=102400,t=2,p=8$cVBZYVRrb0R4QnExZWEwV1NkaVhIaQ$wuiWiAoe4G1uoYhf0Fmse5q1dcYeXZ2NdzXLAbj2fQU",
+      "last_login": "2024-12-11T19:43:00.489Z",
+      "is_superuser": false,
+      "username": "sam",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-12-09T17:47:20Z",
+      "groups": [
+        5,
+        6
+      ],
+      "user_permissions": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "argon2$argon2id$v=19$m=102400,t=2,p=8$b0t2b2FoODFNOHl4Z1NtcWM4YXJiNw$sQwjHq8pcFkZPdz5fSZtn6iFpN+Rx0Lo7BbAyZBG6iY",
+      "last_login": "2024-12-11T20:41:13.836Z",
+      "is_superuser": false,
+      "username": "jonh",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-12-09T17:51:25Z",
+      "groups": [],
+      "user_permissions": [
+        32
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "argon2$argon2id$v=19$m=102400,t=2,p=8$cDNzYU14ZzJkbEVHYmFWSFJyT2lBOQ$sYYXOpQMZRUFN6+DFVMZUo6nyDUJXFKOdOQNBQVazdk",
+      "last_login": "2024-12-18T10:39:46.624Z",
+      "is_superuser": false,
+      "username": "nick",
+      "first_name": "Nikolahsa",
+      "last_name": "Nikolashkovich",
+      "email": "nikolasha@polyasha.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-12-09T18:09:54.184Z",
+      "groups": [
+        5
+      ],
+      "user_permissions": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "argon2$argon2id$v=19$m=102400,t=2,p=8$RXZNek9aN3ZzWUozZzdWMmVIRUpmWg$K6jkZwlXT3ZQX/ozH5whs2cwtLfJNZpzBkuwgGoHu5g",
+      "last_login": "2024-12-18T10:40:39.434Z",
+      "is_superuser": false,
+      "username": "Fil",
+      "first_name": "Man",
+      "last_name": "Filip",
+      "email": "12wer@zhopa.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-12-09T19:25:06Z",
+      "groups": [],
+      "user_permissions": [
+        29,
+        25,
+        26
+      ]
+    }
+  }
+]

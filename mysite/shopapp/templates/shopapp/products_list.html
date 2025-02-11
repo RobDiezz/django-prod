@@ -1,0 +1,76 @@
+{% extends 'shopapp/base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+  {% trans 'Product list' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{% trans 'Products' %}:</h1>
+
+  {% if products and perms.shopapp.add_product %}
+    <div>
+      {% blocktranslate count product_count=products|length %}
+        There is only one product.
+        {% plural %}
+        There are {{ product_count }} products.
+      {% endblocktranslate %}
+    </div>
+    <ul>
+      <li>
+        <a class="link-shopapp" href="{% url 'shopapp:product_create' %}"
+        >{% trans 'Create a new product' %}</a>
+      </li>
+    </ul>
+    <div>
+      <table class="price-list text-center">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>{% trans 'Name' context 'product name' %}</th>
+          <th>{% trans 'Image' %}</th>
+          <th>{% trans 'Price' %}</th>
+          <th>{% trans 'Discount' %}</th>
+          <th>{% trans 'Crated by' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+          <tr>
+
+            <th>{{ forloop.counter }}</th>
+            <td><a class="link-shopapp"
+                   href="{% url 'shopapp:product_details' pk=product.pk %}">
+              {{ product.name }}</a></td>
+            <td>{% if product.preview %}
+              <img style="width: 200px" src="{{ product.preview.url }}" alt=
+                      "{{ product.preview.name }}">
+            {% endif %}</td>
+            <td> {{ product.price }}</td>
+            <td>{% if product.discount %}
+              {{ product.discount }} %
+            {% else %}
+              {% trans 'no discount' %}
+            {% endif %}</td>
+            <td>{% if product.created_by %}
+              {{ product.created_by }}
+            {% endif %} </td>
+            {#          <td> {% firstof product.discount 'no discount' %}</td>      #}
+
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  {% else %}
+    {% url 'shopapp:product_create' as create_product_url %}
+    {% blocktranslate %}
+      <h3>No products yet</h3>
+      <a href="{{ create_product_url }}"
+      >Create a new one</a>
+    {% endblocktranslate %}
+  {% endif %}
+
+{% endblock %}

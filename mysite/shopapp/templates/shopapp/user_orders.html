@@ -1,0 +1,46 @@
+{% extends "shopapp/base.html" %}
+{% load cache i18n %}
+
+{% block title %}
+  {% translate 'User orders' %}
+{% endblock %}
+
+{% block body %}
+  <h1>
+    {% blocktranslate with name_user=owner.username %}
+      User {{ name_user }} completed the following orders
+    {% endblocktranslate %}
+  </h1>
+
+  <div>
+    {% if user_orders %}
+      {% cache 300 user_orders_info owner.pk %}
+      {% for order in user_orders %}
+        <p><a href="{% url 'shopapp:order_details' pk=order.pk %}">{% translate 'Order' %}
+          #{{ forloop.counter }}</a></p>
+        <p>{% translate 'Created at' %}: {{ order.created_at }}</p>
+        <p>{% translate 'Promocode' %}: {{ order.promocode }}</p>
+        <p>{% translate 'Delivery address' %}: {{ order.delivery_address }}</p>
+        <div>
+          {% translate 'Products in order' %}:
+          <ul>
+            {% for product in order.products.all %}
+              <li>{{ product.name }} {% translate 'for' %} ${{ product.price }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% if order.receipt %}
+          <a href="{{ order.receipt.url }}">{% translate 'Receipt' %}</a>
+          <br>
+        {% endif %}
+        <br>
+      {% endfor %}
+      {% endcache %}
+    {% else %}
+      {% blocktranslate with user_name=owner.username %}
+        <h3>User {{ user_name }} has no orders yet</h3>
+      {% endblocktranslate %}
+    {% endif %}
+  </div>
+
+{% endblock %}

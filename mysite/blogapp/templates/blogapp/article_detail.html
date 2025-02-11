@@ -1,0 +1,25 @@
+{% extends "shopapp/base.html" %}
+{% load i18n %}
+
+{% block title %}
+  {% translate 'Article' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{% translate 'Article Details' %}</h1>
+  <br>
+  <div>
+    <p>{% translate 'Title' %}: {{ article.title }}</p>
+    <p>{% translate 'Publication date' %}: {{ article.pub_date }}</p>
+    <p>{% translate 'Author' %}: {{ article.author.name }}</p>
+    <div>
+      <p>{% translate 'Content' %}:</p>
+      <p class="content-block">{{ article.content }}</p>
+    </div>
+  </div>
+  <br>
+  <nav>
+    <a class="link-shopapp" href="{% url 'blogapp:article' %}"
+    >{% translate 'Back to articles' %}</a>
+  </nav>
+{% endblock %}

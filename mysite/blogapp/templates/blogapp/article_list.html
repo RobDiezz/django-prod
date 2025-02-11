@@ -1,0 +1,40 @@
+{% extends "shopapp/base.html" %}
+{% load i18n %}
+
+{% block title %}
+  {% translate 'Articles list' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{% translate 'Articles' %}</h1>
+
+  {% if articles %}
+    <div>
+      {% blocktranslate count article_count=articles|length %}
+        There is only one article.
+        {% plural %}
+        There are {{ article_count }} articles.
+      {% endblocktranslate %}
+    </div>
+    <br>
+    <div>
+      {% for article in articles %}
+        <p><b>{% translate 'Article №' %}{{ forloop.counter }}</b></p>
+        <p>{% translate 'Title' %}: <a class="head-links"
+                                       href="{% url 'blogapp:article_details' pk=article.pk %}"
+        >{{ article.title }}</a></p>
+        <p>{% translate 'Publication date' %}: {{ article.pub_date }}</p>
+        <p>{% translate 'Author' %}: {{ article.author.name }}</p>
+        <p>{% translate 'Category' %}: {{ article.category.name }}</p>
+        <p>{% translate 'Tags' %}:
+          <b>{% for tag in article.tags.all %}
+            {{ tag.name }}
+          {% endfor %}</b>
+        </p>
+        <br>
+      {% endfor %}
+    </div>
+  {% else %}
+    <h3>{% translate 'No published articles yet' %}</h3>
+  {% endif %}
+{% endblock %}

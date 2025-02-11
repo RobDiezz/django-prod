@@ -1,0 +1,32 @@
+{% extends 'shopapp/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% translate 'Login' %}
+{% endblock %}
+
+{% block body %}
+  <form method="post" action="{% url 'myauth:login' %}">
+    {% csrf_token %}
+
+{#    {{ form.as_p }}#}
+
+    {% if error %}
+      <p style="color: red">
+        {{ error }}
+      </p>
+    {% endif %}
+
+    <p>
+      <label for="username">{% translate 'Username' %}:</label>
+      <input type="text" id="username" name="username" required>
+    </p>
+    <p>
+      <label for="password">{% translate 'Password' %}:</label>
+      <input type="password" id="password" name="password" required>
+    </p>
+
+    <button type="submit">{% translate 'Login' %}</button>
+  </form>
+
+{% endblock %}

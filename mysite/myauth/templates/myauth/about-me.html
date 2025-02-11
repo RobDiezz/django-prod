@@ -1,0 +1,49 @@
+{% extends "shopapp/base.html" %}
+{% load cache %}
+{% load i18n %}
+
+{% block title %}
+  {% translate 'About me' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{{ user.username }}'s {% translate 'Profile' %}</h1>
+  <div>
+  Products available: {% now "u" %}
+  </div>
+  {% if user.is_authenticated %}
+    {% cache 300 userinfo user.username %}
+      <h2>{% translate 'Detail' %}</h2>
+      {% if user.profile.avatar %}
+        <img class="image-avatar" src="{{ user.profile.avatar.url }}"
+             alt="{{ user.profile.avatar.name }}">
+        <br>
+      {% else %}
+        <p>{% translate 'Not image' %}</p>
+      {% endif %}
+      <br>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_form.avatar }}
+
+        <p><a href="{% url 'myauth:about-me' pk=user.pk %}" onclick="this.closest('form').submit
+      (); return false;">{% translate 'Update avatar' %}</a></p>
+      </form>
+      {% blocktranslate with username=user.username first_name=user.first_name last_name=user.last_name email=user.email bio=user.profile.bio agreement=user.profile.agreement_accepted %}
+        <p>Username: {{ username }}</p>
+        <p>First name: {{ first_name }}</p>
+        <p>Last name: {{ last_name }}</p>
+        <p>Email: {{ email }}</p>
+        <p>Bio: {{ bio }}</p>
+        <p>Agreement: {{ agreement }}</p>
+      {% endblocktranslate %}
+      <br>
+      <a href="{% url 'myauth:profile-update' pk=user.pk %}"
+      >{% translate 'Update profile' %}</a>
+    {% endcache %}
+
+    <br>
+  {% else %}
+    <h2>{% translate 'User is anonymous' %}</h2>
+  {% endif %}
+{% endblock %}

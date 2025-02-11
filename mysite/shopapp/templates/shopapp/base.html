@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static i18n %}
+
+
+<html lang="{% get_current_language as LANGUAGE_CODE %}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %}
+      {% translate 'Base Title' %}
+    {% endblock %}
+  </title>
+  <link rel="stylesheet" type="text/css" href="{% static 'shopapp/css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'myauth/css/style.css' %}">
+  {#  Подключаем шрифты Roboto из Google Fonts#}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+  {#  Подключаем Bootstrap для Form#}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+
+</head>
+<div class="popup-container" id="loginPopup" style="display:none;">
+  <div class="popup">
+    <form id="loginForm" method="post" action="{% url 'myauth:login' %}">
+      {% csrf_token %}
+      {% translate 'input your login' as input_login %}
+      {% translate 'input your password' as input_password %}
+      <p>
+        <input type="text" name="username" placeholder="{{ input_login }}" required>
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="{{ input_password }}" required>
+      </p>
+      <a href="{% url 'myauth:register' %}">{% translate 'Registration' %}</a>
+      <button type="submit" class="dark-button">{% translate 'Login' %}</button>
+    </form>
+  </div>
+</div>
+<header>
+  <div class="login-logout">
+    <div class="head-links">
+      {% url 'shopapp:shop_index' as shop_index_url %}
+      {% url 'shopapp:product_list' as product_list_url %}
+      {% url 'shopapp:orders_list' as orders_list_url %}
+      {% url 'shopapp:group_list' as group_list_url %}
+      {% url 'myauth:user-list' as user_list_url %}
+      {% url 'blogapp:article' as article_list_url %}
+      {% blocktranslate %}
+        <a href="{{ shop_index_url }}">Home page</a>
+        <a href="{{ product_list_url }}">Product list</a>
+        <a href="{{ orders_list_url }}">Order list</a>
+        <a href="{{ group_list_url }}">Group list</a>
+        <a href="{{ user_list_url }}">User list</a>
+        <a href="{{ article_list_url }}">Articles</a>
+      {% endblocktranslate %}
+    </div>
+    <div>
+      {% if request.user.is_authenticated %}
+        <form method="post" action="{% url 'myauth:logout' %}">
+          {% csrf_token %}
+          <span style="margin-right: 40px"><a href="{% url 'myauth:about-me' pk=user.pk %}"
+          >{{ request.user }}</a>
+          </span>
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" id="logoutButton">{% trans 'Logout' %}</button>
+          {#        <a href="{% url 'myauth:logout' %}?next={{ request.path }}">Logout</a>#}
+        </form>
+      {% else %}
+        {#        <a class="open-popup" href="{% url 'myauth:login' %}?next#}
+        {#        ={{ request.path }}">Login</a>#}
+        <button class="open-popup" onclick="showLoginPopup()">{% trans 'Login' %}</button>
+      {% endif %}
+    </div>
+  </div>
+</header>
+<script src={% static 'shopapp/js/script.js' %}></script>
+<script src="{% static 'myauth/js/script.js' %}"></script>
+<script>
+    // Функция для отображения всплывающего окна
+    function showLoginPopup() {
+        document.getElementById('loginPopup').style.display = 'flex';
+    }
+</script>
+<body>
+{% block body %}
+  {% trans 'Base body' %}
+{% endblock %}
+<br>
+<div>
+  {% now 'DATETIME_FORMAT' %}
+</div>
+<div>
+  {% trans 'Today is' %} {% now 'l' %}
+</div>
+</body>
+</html>

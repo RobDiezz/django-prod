@@ -1,0 +1,29 @@
+{% extends 'shopapp/base.html' %}
+{% load i18n %}
+
+{% block title %}
+  {% translate 'Update profile' %}
+{% endblock %}
+
+{% block body %}
+  <h1>{% translate 'Update profile' %} {{ user.username }}</h1>
+
+  {% if user.is_authenticated %}
+    <div>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        {{ profile_form.as_p }}
+
+        <div>
+          <button class="button-back-to" id="backToProfileBtn" data-pk="{{ user.pk }}"
+          >{% translate 'Back to profile' %}
+          </button>
+          <button type="submit">{% translate 'Update' %}</button>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+
+{% endblock %}
