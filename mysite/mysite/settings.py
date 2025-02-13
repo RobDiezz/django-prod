@@ -11,11 +11,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import logging.config
 
 from django.urls import reverse_lazy
 
 from django.utils.translation import gettext_lazy as trans
 import sentry_sdk
+
+from config import settings
 
 sentry_sdk.init(
     dsn="https://examplePublicKey@o0.ingest.sentry.io/0",  # Нужно зарегистрироваться на
@@ -29,20 +32,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATABASE_DIR = BASE_DIR / "database"
 DATABASE_DIR.mkdir(exist_ok=True)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-@rj$pkycq^sa6)e$+@&0y)+ol@_ey9_8&&vcv3d=3o)l5_tnbo"
+SECRET_KEY = settings.secret_key_django
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = settings.django_debug == "1"
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
-]
+] + settings.allowed_hosts.split(",")
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -53,7 +55,6 @@ if DEBUG:
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS.append("10.0.0.2")
     INTERNAL_IPS.extend([ip[: ip.rfind(".")] + ".1" for ip in ips])
-
 
 # Application definition
 
@@ -67,7 +68,7 @@ INSTALLED_APPS = [
     "django.contrib.admindocs",
     "django.contrib.sitemaps",
     # Сторонние приложения
-    "debug_toolbar",
+    # "debug_toolbar",
     "rest_framework",
     "django_filters",
     "widget_tweaks",
@@ -95,7 +96,7 @@ MIDDLEWARE = [
     "requestdataapp.middlewares.set_useragent_on_request_middleware",
     "requestdataapp.middlewares.CountRequestMiddleware",
     "requestdataapp.middlewares.ThrottlingRequestMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     # "django.middleware.cache.FetchFromCacheMiddleware",  # Это нужно писать в конце, что бы
     # отработали все middleware
 ]
@@ -119,7 +120,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "mysite.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -146,7 +146,6 @@ CACHES = {
 
 CACHE_MIDDLEWARE_SECONDS = 200  # Время кэширования в секундах
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -170,7 +169,6 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -192,7 +190,6 @@ LANGUAGES = [
     ("en", trans("English")),
     ("ru", trans("Russian")),
 ]
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -232,41 +229,67 @@ LOGFILE_SIZE = 5 * 1024 * 1024
 # LOGFILE_SIZE = 400  # bytes
 LOGFILE_COUNT = 3
 
-LOGGING = {
+DJANGO_LOGLEVEL = settings.loglevel
+
+logging.config.dictConfig({
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
-        "verbose": {
+        "console": {
             "format": "[%(asctime)s] [%(levelname)s] %(name)s: %(message)s",
         },
     },
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
-        "logfile": {
-            # "class": "logging.handlers.RotatingFileHandler",  # используется для сохранения
-            # логов в битах
-            "class": "logging.handlers.TimedRotatingFileHandler",  # используется для
-            # сохранения логов в днях
-            "filename": LOGFILE_NAME,
-            # "maxBytes": LOGFILE_SIZE,
-            "when": "midnight",  # параметр для TimedRotatingFileHandler
-            "interval": 1,  # параметр для TimedRotatingFileHandler
-            "backupCount": LOGFILE_COUNT,
-            "formatter": "verbose",
-            "encoding": "utf-8",
+            "formatter": "console",
         },
     },
-    "root": {
-        "handlers": [
-            # "console",
-            "logfile"
-        ],
-        "level": "INFO",
+    "loggers": {
+        "": {
+            "level": DJANGO_LOGLEVEL,
+            "handlers": ["console",],
+        },
     },
-}
+
+})
+
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "formatters": {
+#         "verbose": {
+#             "format": "[%(asctime)s] [%(levelname)s] %(name)s: %(message)s",
+#         },
+#     },
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#             "formatter": "verbose",
+#         },
+#         "logfile": {
+#             # "class": "logging.handlers.RotatingFileHandler",  # используется для сохранения
+#             # логов в битах
+#             "class": "logging.handlers.TimedRotatingFileHandler",  # используется для
+#             # сохранения логов в днях
+#             "filename": LOGFILE_NAME,
+#             # "maxBytes": LOGFILE_SIZE,
+#             "when": "midnight",  # параметр для TimedRotatingFileHandler
+#             "interval": 1,  # параметр для TimedRotatingFileHandler
+#             "backupCount": LOGFILE_COUNT,
+#             "formatter": "verbose",
+#             "encoding": "utf-8",
+#         },
+#     },
+#     "root": {
+#         "handlers": [
+#             # "console",
+#             "logfile"
+#         ],
+#         "level": "INFO",
+#     },
+# }
+
 
 # LOGGING = {
 #     "version": 1,
