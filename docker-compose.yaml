@@ -18,6 +18,7 @@ services:
     volumes:
       - ./mysite/:/app/
       - ./static:/app/static
+      - ./mysite/database/:/app/database
 
   nginx: # Nginx
     image: nginx:alpine
