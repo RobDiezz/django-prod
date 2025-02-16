@@ -1,0 +1,18 @@
+.button-back-to {
+    margin-right: 20px;
+}
+
+.image-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.button-update-avatar {
+    background: none;
+    border: none;
+    color: green;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+}
