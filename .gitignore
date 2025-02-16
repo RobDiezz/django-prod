@@ -133,3 +133,6 @@ dmypy.json
 
 # Jetbrains Intellij IDEA
 .idea/
+
+# My Project
+/static
