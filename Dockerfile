@@ -13,8 +13,8 @@ RUN pip install --upgrade pip "poetry==2.0.1" && \
 
 COPY pyproject.toml poetry.lock ./mysite /app/
 
-RUN poetry install --no-root &&  \
-    python manage.py collectstatic --noinput &&  \
-    python manage.py compilemessages
+RUN poetry install --no-root
+#    python manage.py collectstatic --noinput &&  \
+#    python manage.py compilemessages
 
 #CMD ["gunicorn", "mysite.wsgi:application", "--bind", "0.0.0.0:8000"]
